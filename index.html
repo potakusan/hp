@@ -39,29 +39,6 @@
 
       }
     </style>
-    <script>
-      window.addEventListener('DOMContentLoaded', (event)=>{
-        const target = window.document.getElementById("fadingText");
-        const texts = ["RETARDED SIDETRACKED","啃老族坐冷板凳","いきおくれ社内ニート"];
-        const wait = (ms)=>new Promise((resolve) => setTimeout(resolve, ms));
-        let counts = 0;
-
-        const main = async()=>{
-          if(counts === texts.length) counts = 0;
-          target.innerText = texts[counts];
-          counts++;
-          target.classList.add("fadeIn");
-          await wait(500);
-          target.classList.remove("fadeIn");
-          await wait(5000);
-          target.classList.add("fadeOut");
-          await wait(500);
-          target.classList.remove("fadeOut");
-          main();
-        }
-        main();
-      });
-    </script>
   </head>
   <body>
     <main>
@@ -381,5 +358,28 @@
         </div>
         </div>
     </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', ()=>{
+        const target = window.document.getElementById("fadingText");
+        const texts = ["RETARDED SIDETRACKED","啃老族坐冷板凳","いきおくれ社内ニート"];
+        const wait = (ms)=>new Promise((resolve) => setTimeout(resolve, ms));
+        let counts = 0;
+
+        const main = async()=>{
+          if(counts === texts.length) counts = 0;
+          target.innerText = texts[counts];
+          counts++;
+          target.classList.add("fadeIn");
+          await wait(500);
+          target.classList.remove("fadeIn");
+          await wait(5000);
+          target.classList.add("fadeOut");
+          await wait(500);
+          target.classList.remove("fadeOut");
+          main();
+        }
+        main();
+      });
+    </script>
   </body>
 </html>
