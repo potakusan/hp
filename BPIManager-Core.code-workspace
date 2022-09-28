@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "path": "../BPIManager-Core"
+    },
+    {
+      "path": "../BPIM-Supabase"
+    },
+    {
+      "path": "../2022blog"
+    },
+    {
+      "path": "../migrate"
+    },
+    {
+      "path": "."
+    },
+    {
+      "path": "../phone"
+    },
+    {
+      "path": "../bpim-bookmarklet"
+    },
+    {
+      "path": "../getTemp"
+    }
+  ],
+  "settings": {}
+}
