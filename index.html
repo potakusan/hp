@@ -26,6 +26,10 @@
           align-items: center !important;
           justify-content: space-between;
         }
+        
+        .mainContent{
+          padding-top:3rem !important;
+        }
       }
       .lead{
         transition:.5s;
@@ -37,27 +41,73 @@
         opacity:1;
 
       }
+
+      #video {
+        position: absolute;
+        top: 0;
+        left:0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+      }
+      @media screen and (max-width: 1700px) {
+        #video{
+          height:100%;
+        }
+      }
+      @media screen and (max-width:500px) {
+        #video{
+          left:-10%;
+        }
+      }
+      @media screen and (min-width: 800px) {
+        .mainContent{
+          height:70vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+      }
+      @media screen and (min-width:1200px){
+        #video{
+          left:0;
+        }
+      }
+      @media screen and (min-width:1700px){
+        #video{
+          width:100%;
+        }
+      }
+      #head{
+        position: relative;
+        overflow: hidden;
+      }
     </style>
   </head>
   <body>
     <main>
       <div
-        class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+        class="position-relative overflow-hidden text-center"
       >
-        <div
-          class="pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden text-bg-dark"
-          style="padding: 70px 0;"
-        >
-
-          <img
-            src="https://user-images.githubusercontent.com/47537864/192702127-89c27e6c-2741-401e-aceb-fe8bd758bc11.jpg"
-            class="img-thumbnail"
-            alt="poyashi.me"
-            style="width:190px;border-radius: 50%; margin-bottom: 25px"
-          />
-          <h1 class="display-4 fw-normal">poyashi.me</h1>
-          <p class="lead" id="fadingText"></p>
+      <div id="head">
+        <video id="video" src="love.webm" autoplay muted loop type="video/webm"></video>
+        <div style="background:#000000c7;">
+          <div
+            class="pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden mainContent"
+           style="padding: 70px 0;color:#fff;"
+          >
+            <img
+              src="https://user-images.githubusercontent.com/47537864/192702127-89c27e6c-2741-401e-aceb-fe8bd758bc11.jpg"
+              class="img-thumbnail"
+              alt="poyashi.me"
+              style="width:190px;border-radius: 50%; margin-bottom: 25px"
+            />
+            <h1 class="display-4 fw-normal">poyashi.me</h1>
+            <p class="lead" id="fadingText"></p>
+          </div>
         </div>
+      </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>
         <div
           class="bg-light shadow-sm mx-auto"
@@ -66,6 +116,8 @@
             margin: -50px auto 0 auto !important;
             border-radius: 21px;
             padding: 15px 8px !important;
+            z-index:90;
+            position: relative;
           "
         >
           <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
@@ -353,7 +405,7 @@
         <div class="container" style="padding-top:0">
           <h2 style="font-weight: 300" class="pb-2 border-bottom">About Me</h2>
           <p style="word-break:break-all">
-          <span id="myAge"></span>歳童貞 性欲駆動開発 ZUTOMAYO <a href="https://keybase.io/kuonchan" target="_blank">Keybase</a>
+          <span id="myAge"></span>歳童貞 啃老族 loli.dance 性欲駆動開発 るーみっくわーるど ZUTOMAYO <a href="https://keybase.io/kuonchan" target="_blank">Keybase</a>
           </p>
           <div class="accordion accordion-flush" id="x">
             <div class="accordion-item">
@@ -445,6 +497,7 @@ y0WG++RW16xSRZx/Ncd6IvzY
           <h2 style="font-weight: 300" class="pb-2 border-bottom">Blue Archive</h2>
           <img src="https://user-images.githubusercontent.com/47537864/192101837-bba78e14-5597-44a7-81d9-21358810d38c.jpg" class="img-thumbnail">
           <p>ブルアカはじめました☆</p>
+          <p>The copyright of the background used on this page is owned by <a href="https://www.youtube.com/watch?v=pEVhv4eB8Q8" target="_blank" rel="noopener noreferrer">Urusei Yatsura Production Committee</a>.</p>
         </div>
         </div>
     </main>
