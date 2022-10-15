@@ -50,28 +50,51 @@
         min-height: 100%;
         z-index: -1;
       }
+      .mainContent{
+        height:50vh;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: left;
+        width:90%;
+        margin:0 auto;
+        padding-left:0 !important;
+      }
+      #leadText{
+        margin-left:20px;
+        text-align: left;
+      }
+
+      .mainContent .img-thumbnail{
+        width:114px !important;
+        height:114px !important;
+        margin-bottom:0 !important;
+      }
+
+      @media screen and (max-width:1200px) {
+        #video{
+          left:-50%;
+        }
+      }
+
       @media screen and (max-width: 1700px) {
         #video{
           height:100%;
         }
       }
-      @media screen and (max-width:500px) {
-        #video{
-          left:-10%;
-        }
-      }
-      @media screen and (min-width: 800px) {
+      @media screen and (min-width:1200px){
         .mainContent{
           height:70vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
         }
       }
-      @media screen and (min-width:1200px){
+      @media screen and (min-width:800px){
         #video{
           left:0;
+        }
+      }
+      @media screen and (max-width:600px){
+        #video{
+          left:-75%;
         }
       }
       @media screen and (min-width:1700px){
@@ -101,10 +124,12 @@
               src="https://user-images.githubusercontent.com/47537864/192702127-89c27e6c-2741-401e-aceb-fe8bd758bc11.jpg"
               class="img-thumbnail"
               alt="poyashi.me"
-              style="width:190px;border-radius: 50%; margin-bottom: 25px"
+              style="width:190px;height:190px;border-radius: 50%; margin-bottom: 25px"
             />
-            <h1 class="display-4 fw-normal">poyashi.me</h1>
-            <p class="lead" id="fadingText"></p>
+            <div id="leadText">
+              <h1 class="display-4 fw-normal">poyashi.me</h1>
+              <p class="lead" id="fadingText"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -497,14 +522,16 @@ y0WG++RW16xSRZx/Ncd6IvzY
           <h2 style="font-weight: 300" class="pb-2 border-bottom">Blue Archive</h2>
           <img src="https://user-images.githubusercontent.com/47537864/192101837-bba78e14-5597-44a7-81d9-21358810d38c.jpg" class="img-thumbnail">
           <p>ブルアカはじめました☆</p>
-          <p>The copyright of the background used on this page is owned by <a href="https://www.youtube.com/watch?v=pEVhv4eB8Q8" target="_blank" rel="noopener noreferrer">Urusei Yatsura Production Committee</a>.</p>
+          <small>
+          The copyright of the background used on this page is owned by <a href="https://www.youtube.com/watch?v=pEVhv4eB8Q8" target="_blank" rel="noopener noreferrer">Urusei Yatsura Production Committee</a>.
+          </small>
         </div>
         </div>
     </main>
     <script>
       document.addEventListener("DOMContentLoaded", ()=>{
         const target = window.document.getElementById("fadingText");
-        const texts = ["RETARDED SIDETRACKED","坐冷板凳啃老族","いきおくれ社内ニート"];
+        const texts = ["RETARDED SIDETRACKED","坐冷板凳啃老族"];
         const wait = (ms)=>new Promise((resolve) => setTimeout(resolve, ms));
         let counts = 0;
 
@@ -515,7 +542,7 @@ y0WG++RW16xSRZx/Ncd6IvzY
           target.classList.add("fadeIn");
           await wait(500);
           target.classList.remove("fadeIn");
-          await wait(3500);
+          await wait(5000);
           target.classList.add("fadeOut");
           await wait(500);
           target.classList.remove("fadeOut");
