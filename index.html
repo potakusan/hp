@@ -347,6 +347,37 @@
         </div>
 
         <div class="container px-4 py-5" id="icon-grid">
+          <h2 style="font-weight: 300" class="pb-2 border-bottom">納車</h2>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" id="noushaBar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <p>
+            あと<span id="countDown"></span><br/>
+            <span id="countDownMiliSec"></span>
+          </p>
+          <script>
+            const countDown = ()=>{
+              const endDate = new Date(2023,10,9);
+              const startDate = new Date(2022,12,3);
+              const diff = endDate.getTime() - new Date().getTime();
+              const diffFromStart = endDate.getTime() - startDate.getTime();
+              const d = Math.floor(diff / ( 1000 * 60 * 60 * 24 ));
+              const h = Math.floor(diff / 1000 / 60 / 60) % 24;
+              const m = Math.floor(diff / 1000 / 60) % 60;
+              const s = Math.floor(diff / 1000) % 60;
+              const x = (input)=>String(input).padStart(2,"0");
+              window.document.getElementById("noushaBar").style.width = diffFromStart / diff + "%";
+              window.document.getElementById("noushaBar").innerText = Number(diffFromStart / diff).toFixed(2) + "%";
+              window.document.getElementById("countDown").innerHTML = `${x(d)}日${x(h)}時間${x(m)}分${x(s)}秒`;
+              window.document.getElementById("countDownMiliSec").innerHTML = `${diff}ミリ秒`;
+              return;
+            }
+            countDown();
+            setInterval(countDown,1);
+
+          </script>
+
           <h2 style="font-weight: 300" class="pb-2 border-bottom">Links</h2>
 
           <div
