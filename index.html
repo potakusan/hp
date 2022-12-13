@@ -347,18 +347,21 @@
         </div>
 
         <div class="container px-4 py-5" id="icon-grid">
-          <h2 style="font-weight: 300" class="pb-2 border-bottom">納車</h2>
+          <h2 style="font-weight: 300" class="pb-2 border-bottom">納車タイマー</h2>
           <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" id="noushaBar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
 
           <p>
             あと<span id="countDown"></span><br/>
-            <span id="countDownMiliSec"></span>
+            <span id="countDownMiliSec"></span><br/>
+            <small><a href="javascript:z()">ツイート</a></small>
           </p>
           <script>
-            const countDown = ()=>{
-              const endDate = new Date(2023,10,9);
+            const x = (input)=>String(input).padStart(2,"0");
+
+            const getDates = ()=>{
+              const endDate = new Date(2023,10,1);
               const startDate = new Date(2022,12,3);
               const diff = endDate.getTime() - new Date().getTime();
               const diffFromStart = endDate.getTime() - startDate.getTime();
@@ -366,15 +369,24 @@
               const h = Math.floor(diff / 1000 / 60 / 60) % 24;
               const m = Math.floor(diff / 1000 / 60) % 60;
               const s = Math.floor(diff / 1000) % 60;
-              const x = (input)=>String(input).padStart(2,"0");
-              window.document.getElementById("noushaBar").style.width = diffFromStart / diff + "%";
-              window.document.getElementById("noushaBar").innerText = Number(diffFromStart / diff).toFixed(2) + "%";
-              window.document.getElementById("countDown").innerHTML = `${x(d)}日${x(h)}時間${x(m)}分${x(s)}秒`;
-              window.document.getElementById("countDownMiliSec").innerHTML = `${diff}ミリ秒`;
+              return [d,h,m,s,diff,diffFromStart];
+            }
+
+            const countDown = ()=>{
+              const d = getDates();
+              window.document.getElementById("noushaBar").style.width = d[4] / d[5] + "%";
+              window.document.getElementById("noushaBar").innerText = Number(d[4] / d[5]).toFixed(2) + "%";
+              window.document.getElementById("countDown").innerHTML = `${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒`;
+              window.document.getElementById("countDownMiliSec").innerHTML = `${d[4]}ミリ秒`;
               return;
             }
             countDown();
             setInterval(countDown,1);
+
+            const z = ()=>{
+              const d = getDates();
+              window.open(`http://twitter.com/share?text=納車まであと${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒（${d[4]}ミリ秒）`)
+            }
 
           </script>
 
