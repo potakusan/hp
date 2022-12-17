@@ -361,21 +361,22 @@
             const x = (input)=>String(input).padStart(2,"0");
 
             const getDates = ()=>{
-              const endDate = new Date(2023,5,20);
-              const startDate = new Date(2022,12,3);
+              const endDate = new Date(2023,4,20);
+              const startDate = new Date(2022,11,3);
               const diff = endDate.getTime() - new Date().getTime();
               const diffFromStart = endDate.getTime() - startDate.getTime();
+              const x = diffFromStart - diff;
               const d = Math.floor(diff / ( 1000 * 60 * 60 * 24 ));
               const h = Math.floor(diff / 1000 / 60 / 60) % 24;
               const m = Math.floor(diff / 1000 / 60) % 60;
               const s = Math.floor(diff / 1000) % 60;
-              return [d,h,m,s,diff,diffFromStart];
+              return [d,h,m,s,diff,(x / diffFromStart * 100).toFixed(6),x / diffFromStart];
             }
 
             const countDown = ()=>{
               const d = getDates();
-              window.document.getElementById("noushaBar").style.width = d[4] / d[5] + "%";
-              window.document.getElementById("noushaBar").innerText = Number(d[4] / d[5]).toFixed(2) + "%";
+              window.document.getElementById("noushaBar").style.width = d[5] + "%";
+              window.document.getElementById("noushaBar").innerText = d[5] + "%";
               window.document.getElementById("countDown").innerHTML = `${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒`;
               window.document.getElementById("countDownMiliSec").innerHTML = `${d[4]}ミリ秒`;
               return;
@@ -385,7 +386,10 @@
 
             const z = ()=>{
               const d = getDates();
-              window.open(`http://twitter.com/share?text=納車まであと${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒（${d[4]}ミリ秒）`)
+              const length = 25;
+              const p = Math.round(d[6] * length);
+              let m = `[${"=".repeat(p)}>${"#".repeat(length - p)}]`;
+              window.open(`http://twitter.com/share?text=${encodeURIComponent(m)} ${(d[6] * 100).toFixed(3)}％${encodeURIComponent("\n")}納車まであと${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒（${d[4]}ミリ秒）`)
             }
 
           </script>
