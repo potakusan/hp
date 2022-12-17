@@ -361,8 +361,8 @@
             const x = (input)=>String(input).padStart(2,"0");
 
             const getDates = ()=>{
-              const endDate = new Date(2023,10,1);
-              const startDate = new Date(2022,5,20);
+              const endDate = new Date(2023,5,20);
+              const startDate = new Date(2022,12,3);
               const diff = endDate.getTime() - new Date().getTime();
               const diffFromStart = endDate.getTime() - startDate.getTime();
               const d = Math.floor(diff / ( 1000 * 60 * 60 * 24 ));
