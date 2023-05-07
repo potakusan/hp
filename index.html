@@ -379,53 +379,6 @@
         </div>
 
         <div class="container px-4 py-5" id="icon-grid">
-          <h2 style="font-weight: 300" class="pb-2 border-bottom">納車タイマー</h2>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" id="noushaBar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
-          <p>
-            あと<span id="countDown"></span><br/>
-            <span id="countDownMiliSec"></span><br/>
-            <small><a href="javascript:z()">ツイート</a></small>
-          </p>
-          <script>
-            const x = (input)=>String(input).padStart(2,"0");
-
-            const getDates = ()=>{
-              const endDate = new Date(2023,4,6);
-              const startDate = new Date(2022,11,3);
-              const diff = endDate.getTime() - new Date().getTime();
-              const diffFromStart = endDate.getTime() - startDate.getTime();
-              const x = diffFromStart - diff;
-              const d = Math.floor(diff / ( 1000 * 60 * 60 * 24 ));
-              const h = Math.floor(diff / 1000 / 60 / 60) % 24;
-              const m = Math.floor(diff / 1000 / 60) % 60;
-              const s = Math.floor(diff / 1000) % 60;
-              return [d,h,m,s,diff,(x / diffFromStart * 100).toFixed(6),x / diffFromStart];
-            }
-
-            const countDown = ()=>{
-              const d = getDates();
-              window.document.getElementById("noushaBar").style.width = d[5] + "%";
-              window.document.getElementById("noushaBar").innerText = d[5] + "%";
-              window.document.getElementById("countDown").innerHTML = `${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒`;
-              window.document.getElementById("countDownMiliSec").innerHTML = `${d[4]}ミリ秒`;
-              return;
-            }
-            countDown();
-            setInterval(countDown,1);
-
-            const z = ()=>{
-              const d = getDates();
-              const length = 25;
-              const p = Math.round(d[6] * length);
-              let m = `[${"=".repeat(p)}>${"#".repeat(length - p)}]`;
-              window.open(`http://twitter.com/share?text=${encodeURIComponent(m)} ${(d[6] * 100).toFixed(3)}％${encodeURIComponent("\n")}納車まであと${x(d[0])}日${x(d[1])}時間${x(d[2])}分${x(d[3])}秒（${d[4]}ミリ秒）`)
-            }
-
-          </script>
-
           <h2 style="font-weight: 300" class="pb-2 border-bottom">Links</h2>
 
           <div
@@ -618,6 +571,9 @@ y0WG++RW16xSRZx/Ncd6IvzY
               </div>
             </div>
           </div>
+          <h2 style="font-weight: 300" class="pb-2 border-bottom">Instagram</h2>
+          <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe src="http://lightwidget.com/widgets/5660ef4825af539fb740caaa3a5c87fb.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
         </div>
         </div>
     </main>
